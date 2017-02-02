@@ -1,10 +1,15 @@
 import _ from 'lodash'
 import React, { Component } from 'react';
 import SearchBar from './search_bar';
-import YTSearch from 'youtube-api-search';
 import AddressList from './address_list'
 import AddressDetail from './address_detail'
-const API_KEY = 'AIzaSyBOO6cTkWz5Aag7Td_64ZXRP1eyPVNkz4Q'
+
+const API_KEY = '1990333215773402'
+const ADDRESS_URL = 'https://us-street.api.smartystreets.com/street-address?auth-id='
+const ADDRESS_URL_PT2 = '&candidates=10&street='
+const ADDRESS_URL_PT3 = '&city=&state-&zipcode-'
+const ZIPCODE_URL = 'https://us-zipcode.api.smartystreets.com/lookup?auth-id='
+const ZIPCODE_URL_PT2 = '&city=&state-&zipcode='
 
 export default class App extends Component {
   constructor(props) {
@@ -14,16 +19,11 @@ export default class App extends Component {
         selectedAddress: null
       }
 
-      this.addressSearch('surfboards')
+      this.addressSearch('')
   }
 
   addressSearch(term) {
-        YTSearch({key: API_KEY, term: term}, (addresses) => {
-            this.setState( {
-              addresses: addresses,
-              selectedAddress: addresses[0]
-            } )
-        });
+        // do Address search here
   }
 
   render() {

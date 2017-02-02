@@ -17,4 +17,4 @@ const AddressList = (props) => {
     )
 }
 
-export default VideoList
+export default AddressList
