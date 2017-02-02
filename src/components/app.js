@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import SearchBar from './search_bar';
 import AddressList from './address_list'
 import AddressDetail from './address_detail'
-import import {
+import {
     API_KEY,
     ADDRESS_URL,
     ADDRESS_URL_PT2,
