@@ -20,20 +20,20 @@ export default class App extends Component {
         selectedAddress: null
       }
 
-      this.addressSearch('')
+      this.addressSearch('80403')
   }
 
-  addressSearch(term) {
+  addressSearch(zip) {
         // do Address search here
-      return Async.fetch(ZIPCODE_URL+API_KEY+ZIPCODE_URL_PT2)
+      return Async.fetch(ZIPCODE_URL+API_KEY+ZIPCODE_URL_PT2+zip)
               .then(() => {
-              console.log('got data='+date)
-      //dispatch({type: SOME_ACTION, data: some_date})
+              console.log('got data='+data)
+      //dispatch({type: SOME_ACTION, data: some_data})
   })}
 
   render() {
 
-    const addressSearch = _.debounce((term) => { this.addressSearch(term) }, 300)
+    const addressSearch = _.debounce((zip) => { this.addressSearch(zip) }, 300)
     return (
     	<div>
       		<SearchBar onSearchTermChange={addressSearch} />
