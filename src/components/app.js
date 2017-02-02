@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 import SearchBar from './search_bar';
 import AddressList from './address_list'
 import AddressDetail from './address_detail'
-
-const API_KEY = '1990333215773402'
-const ADDRESS_URL = 'https://us-street.api.smartystreets.com/street-address?auth-id='
-const ADDRESS_URL_PT2 = '&candidates=10&street='
-const ADDRESS_URL_PT3 = '&city=&state-&zipcode-'
-const ZIPCODE_URL = 'https://us-zipcode.api.smartystreets.com/lookup?auth-id='
-const ZIPCODE_URL_PT2 = '&city=&state-&zipcode='
+import import {
+    API_KEY,
+    ADDRESS_URL,
+    ADDRESS_URL_PT2,
+    ADDRESS_URL_PT3,
+    ZIPCODE_URL,
+    ZIPCODE_URL_PT2
+} from '../constants/constants'
 
 export default class App extends Component {
   constructor(props) {
@@ -24,7 +25,11 @@ export default class App extends Component {
 
   addressSearch(term) {
         // do Address search here
-  }
+      return Async.fetch(ZIPCODE_URL+API_KEY+ZIPCODE_URL_PT2)
+              .then(() => {
+              console.log('got data='+date)
+      //dispatch({type: SOME_ACTION, data: some_date})
+  })}
 
   render() {
 

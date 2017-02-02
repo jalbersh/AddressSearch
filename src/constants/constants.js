@@ -1,0 +1,6 @@
+const API_KEY = '1990333215773402'
+const ADDRESS_URL = 'https://us-street.api.smartystreets.com/street-address?auth-id='
+const ADDRESS_URL_PT2 = '&candidates=10&street='
+const ADDRESS_URL_PT3 = '&city=&state-&zipcode-'
+const ZIPCODE_URL = 'https://us-zipcode.api.smartystreets.com/lookup?auth-id='
+const ZIPCODE_URL_PT2 = '&city=&state-&zipcode='

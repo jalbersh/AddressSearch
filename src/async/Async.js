@@ -1,7 +1,6 @@
 import fetch from "isomorphic-fetch";
 import * as marked from "marked";
 import {Promise} from "es6-promise";
-import {SERVER_ERROR} from "../constants/actionTypes";
 import importPathBuilder from '../browserUtils/pathBuilder'
 
 window.fetch = window.fetch || fetch
@@ -82,7 +81,7 @@ function resolveWithServerErrorFetch(path, options={}, dispatch, fetch, xhrMetho
         }
     }
     return wrappedFetch(path, options, fetch, xhrMethod, pathBuilder).catch(error => {
-        dispatch({type: SERVER_ERROR, error})
+        //dispatch({type: SERVER_ERROR, error})
         throw error
     })
 }
