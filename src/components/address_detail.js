@@ -1,22 +1,22 @@
 import React from 'react'
 
-const VideoDetail = ({video}) => {
-    if (!video) {
+const AddressDetail = ({address}) => {
+    if (!address) {
         return <div>Loading...</div>
     }
-    const videoId = video.id.videoId
+    const addressId = address.id.videoId
     const url = `https://www.youtube.com/embed/${videoId}`;
     return (
-        <div className="video-detail col-md-8">
+        <div className="address-detail col-md-8">
             <div>
                 <iframe className="embed-responsive-item" src={url} ></iframe>
             </div>
             <div className="details">
-                <div>{video.snippet.title}</div>
-                <div>{video.snippet.description}</div>
+                <div>{address.snippet.title}</div>
+                <div>{address.snippet.description}</div>
             </div>
         </div>
     )
 }
 
-export default VideoDetail;
+export default AddressDetail;

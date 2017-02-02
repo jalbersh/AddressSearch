@@ -8,12 +8,33 @@ class SearchBar extends Component {
 
     render() {
         return (
+            <span>
             <div className="search-bar">
+              Street:
               <input
-                 value={this.state.term}
+                 value={this.state.street}
                  onChange={event => this.onInputChange(event.target.value)}
               />
             </div>
+            <div className="city-bar">
+              City:
+              <input
+                 value={this.state.city}
+              />
+            </div>
+            <div className="state-bar">
+              State:
+              <input
+                 value={this.state.state}
+              />
+            </div>
+            <div className="zip-bar">
+              Zip:
+              <input
+                 value={this.state.zip}
+              />
+            </div>
+            </span>
         );
     }
 

@@ -2,40 +2,40 @@ import _ from 'lodash'
 import React, { Component } from 'react';
 import SearchBar from './search_bar';
 import YTSearch from 'youtube-api-search';
-import VideoList from './video_list'
-import VideoDetail from './video_detail'
+import AddressList from './address_list'
+import AddressDetail from './address_detail'
 const API_KEY = 'AIzaSyBOO6cTkWz5Aag7Td_64ZXRP1eyPVNkz4Q'
 
 export default class App extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        videos: [] ,
-        selectedVideo: null
+        address: [] ,
+        selectedAddress: null
       }
 
-      this.videoSearch('surfboards')
+      this.addressSearch('surfboards')
   }
 
-  videoSearch(term) {
-        YTSearch({key: API_KEY, term: term}, (videos) => {
+  addressSearch(term) {
+        YTSearch({key: API_KEY, term: term}, (addresses) => {
             this.setState( {
-              videos: videos,
-              selectedVideo: videos[0]
+              addresses: addresses,
+              selectedAddress: addresses[0]
             } )
         });
   }
 
   render() {
 
-    const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 300)
+    const addressSearch = _.debounce((term) => { this.addressSearch(term) }, 300)
     return (
     	<div>
-      		<SearchBar onSearchTermChange={videoSearch} />
-      		<VideoDetail video={this.state.selectedVideo } />
-      	    <VideoList
-      	        onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-      	        videos={this.state.videos} />
+      		<SearchBar onSearchTermChange={addressSearch} />
+      		<AddressDetail address={this.state.selectedAddress } />
+      	    <AddressList
+      	        onAddressSelect={selectedAddress => this.setState({selectedAddress})}
+      	        addresses={this.state.addresses} />
       	</div>
     );
   }
