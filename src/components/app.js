@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import SearchBar from './search_bar';
 import AddressList from './address_list'
 import AddressDetail from './address_detail'
+import Async from "../async/Async"
+
 import {
     API_KEY,
     ADDRESS_URL,
