@@ -2,11 +2,11 @@ import React from 'react';
 import AddressListItem from './address_list_item';
 
 const AddressList = (props) => {
-    const addressItems = props.addresses.map((address) => {
+    const addressItems = props.addresses.forEach((address) => {
         return (
             <AddressListItem
                 onAddressSelect={props.onAddressSelect}
-                key={address.etag}
+                key={address}
                 address={address} />
         )
     })

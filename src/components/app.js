@@ -19,7 +19,9 @@ export default class App extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        address: [] ,
+        zip: 80403,
+        address: null,
+        addresses: [] ,
         selectedAddress: null
       }
       this.addressSearch('80403')
@@ -34,14 +36,16 @@ export default class App extends Component {
       //         console.log('got data='+data)
       let data = "15193 W 63rd Ave, Arvada, CO, 80403"
       this.setState( {
+              addresses: data,
+              selectedAddress: data,
               address: data
             } )
       // })
   }
 
   render() {
-
-    const addressSearch = _.debounce((zip) => { this.addressSearch(zip) }, 300)
+    const addressSearch = this.addressSearch(zip)
+    console.log('addressSearch = '+addressSearch)
     return (
     	<div>
       		<SearchBar onSearchTermChange={addressSearch} />
