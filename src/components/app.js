@@ -27,15 +27,15 @@ export default class App extends Component {
 
   addressSearch(zip) {
         // do Address search here
-      const dispatch={dispatch}
       let url = ZIPCODE_URL+API_KEY+ZIPCODE_URL_PT2+zip
       console.log('url='+url)
       // return Async.fetch(url)
       //         .then(() => {
       //         console.log('got data='+data)
       let data = "15193 W 63rd Ave, Arvada, CO, 80403"
-      //dispatch({type: "SOME_ACTION", address: data})
-      setState({address:data})
+      this.setState( {
+              address: data
+            } )
       // })
   }
 
@@ -45,11 +45,10 @@ export default class App extends Component {
     return (
     	<div>
       		<SearchBar onSearchTermChange={addressSearch} />
-      		<AddressDetail address={this.state.selectedAddress } dispatch />
+      		<AddressDetail address={this.state.selectedAddress } />
       	    <AddressList
       	        onAddressSelect={selectedAddress => this.setState({selectedAddress})}
       	        addresses={this.state.addresses}
-                dispatch
             />
       	</div>
     );
