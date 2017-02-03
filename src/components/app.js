@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 import SearchBar from './search_bar';
 import AddressList from './address_list'
 import AddressDetail from './address_detail'
@@ -21,17 +22,22 @@ export default class App extends Component {
         address: [] ,
         selectedAddress: null
       }
-
       this.addressSearch('80403')
   }
 
   addressSearch(zip) {
         // do Address search here
-      return Async.fetch(ZIPCODE_URL+API_KEY+ZIPCODE_URL_PT2+zip)
-              .then(() => {
-              console.log('got data='+data)
-      //dispatch({type: SOME_ACTION, data: some_data})
-  })}
+      const dispatch={dispatch}
+      let url = ZIPCODE_URL+API_KEY+ZIPCODE_URL_PT2+zip
+      console.log('url='+url)
+      // return Async.fetch(url)
+      //         .then(() => {
+      //         console.log('got data='+data)
+      let data = "15193 W 63rd Ave, Arvada, CO, 80403"
+      //dispatch({type: "SOME_ACTION", address: data})
+      setState({address:data})
+      // })
+  }
 
   render() {
 
@@ -39,10 +45,12 @@ export default class App extends Component {
     return (
     	<div>
       		<SearchBar onSearchTermChange={addressSearch} />
-      		<AddressDetail address={this.state.selectedAddress } />
+      		<AddressDetail address={this.state.selectedAddress } dispatch />
       	    <AddressList
       	        onAddressSelect={selectedAddress => this.setState({selectedAddress})}
-      	        addresses={this.state.addresses} />
+      	        addresses={this.state.addresses}
+                dispatch
+            />
       	</div>
     );
   }

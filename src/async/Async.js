@@ -37,7 +37,7 @@ function promisedFetch(path, options, handler) {
 }
 
 function wrappedFetch(originalPath, options, fetch = window.fetch, xhrMethod =  XMLHttpRequest, pathBuilder = importPathBuilder) {
-    const path = pathBuilder(originalPath, options.queryParams)
+    const path = originalPath
 
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')
