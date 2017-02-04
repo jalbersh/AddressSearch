@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
 
-class SearchBar extends Component {
+class SearchFields extends Component {
     constructor(props) {
        super(props);
        this.state = { term: '' };
     }
     render() {
+        console.log('in SearchBar with ',props)
         return (
     <span>
     <div className="zip-bar">
             Zip Code:
     <input
-        value={this.state.zip}
+        value={this.state.zipcode}
     />
     </div>
         <div className="state-bar">
@@ -42,4 +43,4 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar;
+export default SearchFields;
