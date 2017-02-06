@@ -2,11 +2,12 @@ import React from 'react'
 
 const AddressListItem = ({address, onAddressSelect}) => {
     const addressItem = address
+    console.log('in addressListItem with '+addressItem)
     return (
-        <li onClick={() => onAddressSelect(address)} className="list-group-item">
+        <li className="list-group-item">
             <div className="address-list media" >
                 <div className="media-left">
-                    some icon for address here
+                    {address}
                 </div>
                 <div className="media-body">
                     <div className="media-heading">{address}</div>

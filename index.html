@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="/style/style.css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-  </head>
-  <body>
-  <div id="app"></div>
-  <div class="container"></div>
-  <script src="./bundle.js"></script>
-  </body>
+<head>
+  <title>Address Suggestions</title>
+  <meta charset="utf-8">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet" type="text/css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//d79i1fxsrar4t.cloudfront.net/jquery.liveaddress/3.0/jquery.liveaddress.min.js"></script>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="style/address.css" media="screen" />
+  <script>
+
+		$(function () {
+			$('form#submitEvent').submit(function () {
+				alert("Form submit. Verification should happen first, then will occur.");
+			});
+		});
+		/** INITIALIZE PLUGIN **/
+		var liveaddress = $.LiveAddress({
+			key: "1990333215773402",
+			debug: true,
+			target: "US",
+			addresses: [{
+				address1: '#street',
+				locality: '#city',
+				administrative_area: '#state',
+				postal_code: '#zip',
+				country: '#country'
+			}],
+			waitForStreet: true
+		});
+  </script>
+</head>
+<body>
+
+<hgroup>
+  <h1>Address Suggestions</h1>
+</hgroup>
+
+
+<form id="addressForm">
+  <header>
+    <h3>Start by entering an address for suggestions</h3>
+  </header>
+  <table>
+    <tr>
+      <td>Street address:</td>
+      <td><input type="text" id="street" {this.state.steet}></td>
+    </tr>
+    <tr>
+      <td>City:</td>
+      <td><input type="text" id="city" {this.state.city}></td>
+    </tr>
+    <tr>
+      <td>State:</td>
+      <td><input type="text" id="state" {this.state.state}></td>
+    </tr>
+    <tr>
+      <td>Zip Code:</td>
+      <td><input type="text" id="zip" {this.state.zip}></td>
+    </tr>
+    <tr>
+      <td>Country:</td>
+      <td><input type="text" id="country" {this.state.country}></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="Clear Form" onClick="addressForm.reset()"></td>
+      <td><input type="submit" value="Submit Form" onClick="onInputChange(event.target.value)"></td>
+    </tr>
+  </table>
+</form>
+
+<hr class="clear">
+
+<hr>
+<div id="app" ></div>
+<div class="container"></div>
+<script src="./bundle.js"></script>
+</body>
 </html>

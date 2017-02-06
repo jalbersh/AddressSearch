@@ -2,16 +2,19 @@ import React from 'react'
 
 const AddressDetail = ({address}) => {
     if (!address) {
-        return <div>status:</div>
+        return <div></div>
     }
-    const addressDetail = address
+    let detail = ''
+    if (address.length>9) {
+        detail = address
+    } else {
+        detail = 'No details'
+    }
+    console.log('in details with '+address)
     return (
         <div className="address-detail col-md-8">
-            <div>
-                some address here
-            </div>
             <div className="details">
-                <div>{address}</div>
+                <div>{detail}</div>
             </div>
         </div>
     )
