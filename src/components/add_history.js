@@ -3,14 +3,8 @@ import {connect} from 'react-redux'
 import AddressList from './address_list'
 import { addHistory } from'../actions/index'
 
-    window.onload = () => {
-        document.getElementById("history1").onclick = function fun() {
-            addToHistory();
-        }
-    };
-
     function getAddress() {
-        console.log('in getAddress')
+        console.log('in add_history:getAddress')
         let addr = document.getElementById('street').value
         let city = document.getElementById('city').value
         let state = document.getElementById('state').value
@@ -22,31 +16,31 @@ import { addHistory } from'../actions/index'
         return fullAddress
     };
 
-    function addToHistory() {
-        console.log('in search_fields:addToHistory')
-        let fullAddress = getAddress()
-        console.log('fullAddress='+fullAddress)
-        console.log('calling addHistory')
-        //this.props.dispatch({'NEW_ADDRESS':fullAddress})
-        console.log('called')
-        this.setState( {
-              addresses: addresses.push(fullAddress),
-              address: fullAddress
-        } )
-        console.log('done')
-    };
-
 class AddHistory extends Component {
     constructor(props) {
        super(props);
        console.log('props='+props);
        console.log('addresses='+this.props.addresses)
     }
+    addToHistory() {
+        console.log('in search_fields:addToHistory1')
+        let fullAddress = getAddress()
+        console.log('fullAddress='+fullAddress)
+        console.log('calling addHistory')
+        //this.props.dispatch({'NEW_ADDRESS':fullAddress})
+        console.log('called')
+        this.setState({address: fullAddress})
+//        this.setState( {
+//              addresses: addresses.push(fullAddress),
+//              address: fullAddress
+//        } )
+        console.log('done')
+    };
     render() {
         let fullAddress = getAddress()
         return (
           <span>
-          <button type="button" id='history1' >Add To History</button>
+          <input type="button" value="Add to history" onClick={() => this.addToHistory(fullAddress)} />
           </span>
         );
     }
