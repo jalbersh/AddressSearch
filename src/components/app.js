@@ -15,7 +15,7 @@ export default class App extends Component {
       var full = addr+','+city+','+state+','+zip
       this.state = {
         address: full,
-        addresses: [full] ,
+        addresses: [] ,
         selectedAddress: full
       }
       console.log('past setting state with full=',full)

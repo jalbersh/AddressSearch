@@ -27,13 +27,14 @@ class AddHistory extends Component {
         let fullAddress = getAddress()
         console.log('fullAddress='+fullAddress)
         console.log('calling addHistory')
-        //this.props.dispatch({'NEW_ADDRESS':fullAddress})
         console.log('called')
         this.setState({address: fullAddress})
-//        this.setState( {
-//              addresses: addresses.push(fullAddress),
-//              address: fullAddress
-//        } )
+        let list = []
+        if (this.state && this.state.addresses) {
+            list = this.state.addresses
+        }
+        list.push(fullAddress)
+        this.setState({addresses: list})
         console.log('done')
     };
     render() {
@@ -47,18 +48,18 @@ class AddHistory extends Component {
 
 }
 
-function mapStateToProps(state) {
-    console.log('in mapStateToProps')
-	return {
-		address: state.address
-	};
-}
-
-function mapDispatchToProps(dispatch) {
-    console.log('in mapDispatchToProps')
-    return bindActionCreators({ address: address }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddHistory);
+// function mapStateToProps(state) {
+//     console.log('in mapStateToProps')
+// 	return {
+// 		address: state.address
+// 	};
+// }
+//
+// function mapDispatchToProps(dispatch) {
+//     console.log('in mapDispatchToProps')
+//     return bindActionCreators({ address: address }, dispatch)
+// }
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(AddHistory);
 
 export default AddHistory;
