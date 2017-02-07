@@ -34,7 +34,7 @@ class AddHistory extends Component {
        console.log('addresses='+this.props.addresses)
     }
     addToHistory() {
-        console.log('in search_fields:addToHistory1')
+        console.log('in search_fields:addToHistory')
         let fullAddress = getAddress()
         console.log('fullAddress='+fullAddress)
         console.log('calling addHistory')
@@ -48,38 +48,23 @@ class AddHistory extends Component {
             type: 'ADD_ADDRESS',
             address: fullAddress
         })
-        // this.setState({address: fullAddress})
-        // let list = []
-        // if (this.state && this.state.addresses) {
-        //     list = this.state.addresses
-        // }
-        // list.push(fullAddress)
-        // this.setState({addresses: list})
+        let list = []
+        if (this.state && this.state.addresses) {
+           list = this.state.addresses
+        }
+        list.push(fullAddress)
+        this.setState({addresses: list})
         console.log('done')
     };
     render() {
         let fullAddress = getAddress()
         return (
-          <span>
-          <input type="button" value="Add to history" onClick={() => this.addToHistory(fullAddress)} />
-          </span>
+            <span>
+            <input type="button" value="Add to history" onClick={() => this.addToHistory(fullAddress)} />
+            </span>
         );
     }
 
 }
-
-// function mapStateToProps(state) {
-//     console.log('in mapStateToProps')
-// 	return {
-// 		address: state.address
-// 	};
-// }
-//
-// function mapDispatchToProps(dispatch) {
-//     console.log('in mapDispatchToProps')
-//     return bindActionCreators({ address: address }, dispatch)
-// }
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(AddHistory);
 
 export default AddHistory;

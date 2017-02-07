@@ -1,5 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
 import AddressListItem from './address_list_item';
+import { addHistory } from '../actions/index'
+import new_address from '../reducers'
 
 const AddressList = (props) => {
     const addressItems = props.addresses.forEach((address) => {
