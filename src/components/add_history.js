@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
 import AddressList from './address_list'
-import { addHistory } from'../actions/index'
+import { addHistory } from '../actions/index'
+import new_address from '../reducers'
 
     function getAddress() {
         console.log('in add_history:getAddress')
@@ -16,6 +18,15 @@ import { addHistory } from'../actions/index'
         return fullAddress
     };
 
+    function logger({ getState }) {
+        return (next) => (action) => {
+            console.log('will dispatch', action)
+            let returnValue = next(action)
+            console.log('state after dispatch', getState())
+            return returnValue
+        }
+    }
+
 class AddHistory extends Component {
     constructor(props) {
        super(props);
@@ -28,13 +39,22 @@ class AddHistory extends Component {
         console.log('fullAddress='+fullAddress)
         console.log('calling addHistory')
         console.log('called')
-        this.setState({address: fullAddress})
-        let list = []
-        if (this.state && this.state.addresses) {
-            list = this.state.addresses
-        }
-        list.push(fullAddress)
-        this.setState({addresses: list})
+        let store = createStore(
+            new_address,
+            [ 'Use Redux' ],
+            applyMiddleware(logger)
+        )
+        store.dispatch({
+            type: 'ADD_ADDRESS',
+            address: fullAddress
+        })
+        // this.setState({address: fullAddress})
+        // let list = []
+        // if (this.state && this.state.addresses) {
+        //     list = this.state.addresses
+        // }
+        // list.push(fullAddress)
+        // this.setState({addresses: list})
         console.log('done')
     };
     render() {
