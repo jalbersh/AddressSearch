@@ -5,6 +5,7 @@ import { addHistory } from '../actions/index'
 import new_address from '../reducers'
 
 const AddressDetail = ({address}) => {
+    console.log('in ADdressDetail with address=',address)
     if (!address) {
         return <div></div>
     }

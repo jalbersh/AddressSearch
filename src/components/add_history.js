@@ -6,7 +6,7 @@ import { addHistory } from '../actions/index'
 import new_address from '../reducers'
 
     function getAddress() {
-        console.log('in add_history:getAddress')
+        console.log('in AddHistory:getAddress')
         let addr = document.getElementById('street').value
         let city = document.getElementById('city').value
         let state = document.getElementById('state').value
@@ -34,7 +34,7 @@ class AddHistory extends Component {
        console.log('addresses='+this.props.addresses)
     }
     addToHistory() {
-        console.log('in search_fields:addToHistory')
+        console.log('in AddHistory:addToHistory')
         let fullAddress = getAddress()
         console.log('fullAddress='+fullAddress)
         console.log('calling addHistory')
@@ -57,11 +57,24 @@ class AddHistory extends Component {
         console.log('done')
     };
     render() {
+        console.log('in AddHistory:render')
+        let addrs = []
+        if (this.props && this.props.addresses) {
+            console.log('props addresses=',this.props.addresses)
+            addrs = this.props.addresses
+        }
+        if (this.state && this.state.addresses) {
+            console.log('state addresses=',this.state.addresses)
+            addrs = this.state.addresses
+        }
         let fullAddress = getAddress()
         return (
             <span>
             <input type="button" value="Add to history" onClick={() => this.addToHistory(fullAddress)} />
-            </span>
+            <AddressList
+                addresses={addrs}
+            />
+    </span>
         );
     }
 

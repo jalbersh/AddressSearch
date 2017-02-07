@@ -1,0 +1,36 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {Provider} from 'react-redux'
+import {Router, Route, IndexRoute, browserHistory} from 'react-router'
+import {syncHistoryWithStore} from 'react-router-redux'
+
+import configureStore from './configuration/configureStore'
+import singleStore from './spa/reducers/spaRootReducer'
+import env from './utils/env'
+import {connectStore} from './spa/utils/store'
+
+//import App from './spa/components/App'
+//import AccountInfo from './accountInfo/components/AccountInfo'
+
+//const ConnectedAccountInfo = connectStore(AccountInfo, 'accountInfo')
+
+const appContainer = document.getElementById('app')
+//const store = configureStore(singleStore)
+//const history = syncHistoryWithStore(browserHistory, store)
+
+let routes = [
+    <Route key='account_info' path={`${env.getBaseUrl()}/account_info`} component={ConnectedAccountInfo} />,
+]
+const enabledRoutes = routes.filter((route) => !env.isFeatureDisabledByLocation(route.props.path))
+
+ReactDOM.render(
+<Provider store={store}>
+    <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
+<Route path={env.getBaseUrl()} component={App}>
+    <IndexRoute key="index" component={ConnectedAccountOverview}/>
+    {enabledRoutes}
+    </Route>
+    </Router>
+    </Provider>,
+    appContainer
+)
