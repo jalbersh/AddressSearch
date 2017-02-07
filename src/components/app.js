@@ -29,6 +29,11 @@ export default class App extends Component {
       return (
     	<div>
       		<AddHistory />
+      		<AddressDetail address={this.state.selectedAddress } />
+      	    <AddressList
+      	        onAddressSelect={selectedAddress => this.setState({selectedAddress})}
+      	        addresses={this.state.addresses}
+            />
       	</div>
     );
   }

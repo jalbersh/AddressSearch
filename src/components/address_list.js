@@ -15,7 +15,7 @@ const AddressList = (props) => {
         console.log('AddressList-addresses='+props.addresses)
         let addressItems = []
         if (props && props.addresses) {
-                const addressItems = props.addresses.forEach((address) => {
+                    addressItems = props.addresses.forEach((address) => {
                     console.log('in AddressList: address=' + address)
 //                    if (address.length > 4) {
                         return (
