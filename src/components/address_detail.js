@@ -1,28 +1,35 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { addHistory } from '../actions/index'
-import new_address from '../reducers'
 
-const AddressDetail = ({address}) => {
-    console.log('in AddressDetail with address=',address)
-    if (!address) {
-        return <div></div>
+export class AddressDetail extends Component {
+    constructor(props) {
+        super(props)
     }
-    let detail = ''
-    if (address.length>9) {
-        detail = address
-    } else {
-        detail = 'No details'
-    }
-    console.log('in details with '+address)
-    return (
-        <div className="address-detail col-md-8">
-            <div className="details">
-                <div>detail-{detail}</div>
+
+    render() {
+        console.log('in AddressDetail with address=', address)
+        const props = this.props
+        const address = props.address
+        if (!address) {
+            return (
+              <div></div>
+            )
+        }
+        let detail = ''
+        if (address.length > 9) {
+            detail = address
+        } else {
+            detail = 'No details'
+        }
+        console.log('in details with ' + address)
+        return (
+            <div>
+            <div> detail - {detail} </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default AddressDetail;

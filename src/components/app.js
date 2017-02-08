@@ -18,8 +18,7 @@ export default class App extends Component {
       var full = addr+','+city+','+state+','+zip
       this.state = {
         address: full,
-        addresses: [] ,
-        selectedAddress: full
+        addresses: []
       }
       console.log('past setting state with full=',full)
   }
@@ -29,9 +28,8 @@ export default class App extends Component {
       return (
     	<div>
       		<AddHistory />
-      		<AddressDetail address={this.state.selectedAddress } />
+      		<AddressDetail address={this.state.address } />
       	    <AddressList
-      	        onAddressSelect={selectedAddress => this.setState({selectedAddress})}
       	        addresses={this.state.addresses}
             />
       	</div>

@@ -74,7 +74,7 @@ class AddHistory extends Component {
             <AddressList
                 addresses={addrs}
             />
-    </span>
+            </span>
         );
     }
 
