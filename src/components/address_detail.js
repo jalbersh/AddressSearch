@@ -5,7 +5,7 @@ import { addHistory } from '../actions/index'
 import new_address from '../reducers'
 
 const AddressDetail = ({address}) => {
-    console.log('in ADdressDetail with address=',address)
+    console.log('in AddressDetail with address=',address)
     if (!address) {
         return <div></div>
     }
@@ -19,7 +19,7 @@ const AddressDetail = ({address}) => {
     return (
         <div className="address-detail col-md-8">
             <div className="details">
-                <div>{detail}</div>
+                <div>detail-{detail}</div>
             </div>
         </div>
     )
