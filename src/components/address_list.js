@@ -38,8 +38,9 @@ export class AddressList extends Component {
         // )
         return (
                 <ul>
-                        {props.addresses.map(({text}) => {
-                            return <li>{text}</li>
+                        {props.addresses.map((address) => {
+                            console.log('AddressList-address=',address)
+                            return <li>{address}</li>
                         })}
                 </ul>
         )
