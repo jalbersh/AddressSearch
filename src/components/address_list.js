@@ -12,16 +12,16 @@ export class AddressList extends Component {
         console.log('in AddressList:render')
         const props = this.props
         console.log('AddressList-addresses='+props.addresses)
-        const addressItems = props.addresses.forEach((address) => {
-              console.log('in AddressList: address=' + address)
+        // const addressItems = props.addresses.forEach((address) => {
+        //       console.log('in AddressList: address=' + address)
 //              if (address.length > 4) {
-              return (
-                   <li>
-                   <div>
-                      {address}
-                    </div>
-                   </li>
-               )
+//               return (
+//                    <li>
+//                    <div>
+//                       {address}
+//                     </div>
+//                    </li>
+//                )
                // } else {
                //     let none = 'No History'
                //     return (
@@ -29,12 +29,19 @@ export class AddressList extends Component {
                //         address = {none} />
                //     )
                // }
-        })
-        console.log('AddressList-addressItems=',addressItems)
+        // })
+        // console.log('AddressList-addressItems=',addressItems)
+        // return (
+        //     <ul>
+        //    {addressItems}
+        //     </ul>
+        // )
         return (
-            <ul>
-           {addressItems}
-            </ul>
+                <ul>
+                        {props.addresses.map(({text}) => {
+                            return <li>{text}</li>
+                        })}
+                </ul>
         )
     }
 }
