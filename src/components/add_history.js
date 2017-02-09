@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux'
 import AddressList from './address_list'
 import { addHistory } from '../actions/index'
 import new_address from '../reducers'
+import addresses from '../reducers'
 
     function getAddress() {
         console.log('in AddHistory:getAddress')
@@ -30,15 +31,37 @@ import new_address from '../reducers'
 class AddHistory extends Component {
     constructor(props) {
        super(props);
-       console.log('props='+props);
-       console.log('addresses='+this.props.addresses)
+       console.log('AddHistory-props-addresses='+this.props.addresses)
+    }
+    addToHistory(addressList) {
+        console.log('in AddHistory:addToHistory-1')
+        let store = createStore(
+            addresses,
+            [ 'Use Redux' ],
+            applyMiddleware(logger)
+        )
+        store.dispatch({
+            type: 'ADD_ADDRESSES',
+            addresses: addressList
+        })
+        let list = addressList
+        this.setState({addresses: list})
+    }
+    inList(list,element) {
+        let found=false
+        if (list) {
+            list.map((address) => {
+                if (address == element) {
+                    found = true
+                }
+            })
+        }
+        return found
     }
     addToHistory() {
         console.log('in AddHistory:addToHistory')
         let fullAddress = getAddress()
         console.log('fullAddress='+fullAddress)
-        console.log('calling addHistory')
-        console.log('called')
         let store = createStore(
             new_address,
             [ 'Use Redux' ],
@@ -52,12 +75,12 @@ class AddHistory extends Component {
         if (this.state && this.state.addresses) {
            list = this.state.addresses
         }
-        list.push(fullAddress)
+        if (!this.inList(list,fullAddress)) {
+            list.push(fullAddress)
+        }
         this.setState({addresses: list})
-        console.log('done')
-    };
+    }
     render() {
-        console.log('in AddHistory:render')
         let addrs = []
         if (this.props && this.props.addresses) {
             console.log('props addresses=',this.props.addresses)

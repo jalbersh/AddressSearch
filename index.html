@@ -25,8 +25,7 @@
 				address1: '#street',
 				locality: '#city',
 				administrative_area: '#state',
-				postal_code: '#zip',
-				country: '#country'
+				postal_code: '#zip'
 			}],
 			waitForStreet: true
 		});
@@ -61,12 +60,7 @@
       <td><input type="text" id="zip" {this.state.zip}></td>
     </tr>
     <tr>
-      <td>Country:</td>
-      <td><input type="text" id="country" {this.state.country}></td>
-    </tr>
-    <tr>
       <td><input type="button" value="Clear Form" onClick="addressForm.reset()"></td>
-      <td><input type="submit" value="Submit Form" ></td>
     </tr>
   </table>
 </form>

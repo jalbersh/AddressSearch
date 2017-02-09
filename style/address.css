@@ -36,6 +36,10 @@
     line-height: 1em;
     }
 
+    .hr-thick {
+      size: 5px;
+    }
+
     form {
     border: 5px solid #AAA;
     width: 350px;

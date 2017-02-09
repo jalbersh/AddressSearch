@@ -7,7 +7,6 @@ export class AddressListItem extends Component {
         constructor(props) {
             super(props)
         }
-
         render() {
             const props = this.props
             const addressItem = props.address

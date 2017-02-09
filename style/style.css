@@ -40,3 +40,8 @@
 .list-group-item:hover {
   background-color: #eee;
 }
+
+.hr-thick {
+  size: 5px;
+}
+
