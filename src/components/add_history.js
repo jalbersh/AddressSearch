@@ -5,6 +5,7 @@ import AddressList from './address_list'
 import { addHistory } from '../actions/index'
 import new_address from '../reducers'
 import addresses from '../reducers'
+import toastr from 'toastr'
 
     function getAddress() {
         console.log('in AddHistory:getAddress')
@@ -32,20 +33,6 @@ class AddHistory extends Component {
     constructor(props) {
        super(props);
        console.log('AddHistory-props-addresses='+this.props.addresses)
-    }
-    addToHistory(addressList) {
-        console.log('in AddHistory:addToHistory-1')
-        let store = createStore(
-            addresses,
-            [ 'Use Redux' ],
-            applyMiddleware(logger)
-        )
-        store.dispatch({
-            type: 'ADD_ADDRESSES',
-            addresses: addressList
-        })
-        let list = addressList
-        this.setState({addresses: list})
     }
     inList(list,element) {
         let found=false
@@ -91,6 +78,9 @@ class AddHistory extends Component {
             addrs = this.state.addresses
         }
         let fullAddress = getAddress()
+        if (fullAddress) {
+            toastr.success('    A new address has been added to history!!!');
+        }
         return (
             <span>
             <input type="button" value="Add to history" onClick={() => this.addToHistory(fullAddress)} />

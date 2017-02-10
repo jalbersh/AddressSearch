@@ -10,12 +10,33 @@ export class AddressList extends Component {
      }
      render() {
         const props = this.props
+        const div_style = {
+            border: '5px double',
+        }
+        const hr_style = {
+            height: '10px',
+            background: 'black',
+	        border: '5px double',
+            color: 'red'
+        }
+        const list_style = {
+            border: '3px solid black',
+            padding: '5px',
+            float: 'left',
+            fontSize: '30px',
+            color: 'lightBlue',
+            marginTop: '5px',
+            fontStyle: 'normal',
+            fontStretch: 'normal',
+            textAlign: 'left',
+            'list-style-type': 'none'
+        }
         console.log('AddressList-addresses='+props.addresses)
         return (
                 <div>
                 <h3>Address History</h3>
-                <hr />
-                <ul>
+                <hr style={hr_style}/>
+                <ul style={list_style}>
                         {props.addresses.map((address) => {
                             console.log('AddressList-address=',address)
                             return <li>{address}</li>

@@ -37,7 +37,8 @@
     "react-dom": "^0.14.3",
     "react-redux": "^4.4.6",
     "react-router": "^2.0.1",
-    "redux": "^3.0.4"
+    "redux": "^3.0.4",
+    "toastr": "^2.1.2"
   },
   "directories": {
     "test": "test"
