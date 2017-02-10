@@ -19,8 +19,8 @@
 
 #toast-container {
     width: 300px;
-    top: 12px;
-    left: 12px;
+    top: 350px;
+    left: 500px;
     position: fixed;
     z-index: 9999;
 }
@@ -30,6 +30,7 @@
 }
 
 .toast-message {
+    showDuration: 100;
 }
 
 .toast-success {

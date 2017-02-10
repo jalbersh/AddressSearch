@@ -63,6 +63,7 @@ class AddHistory extends Component {
            list = this.state.addresses
         }
         if (!this.inList(list,fullAddress)) {
+            toastr['success']('A new address has been added to history!!!');
             list.push(fullAddress)
         }
         this.setState({addresses: list})
@@ -78,12 +79,9 @@ class AddHistory extends Component {
             addrs = this.state.addresses
         }
         let fullAddress = getAddress()
-        if (fullAddress) {
-            toastr.success('    A new address has been added to history!!!');
-        }
         return (
             <span>
-            <input type="button" value="Add to history" onClick={() => this.addToHistory(fullAddress)} />
+            <input type="button" value="Add to history" onClick={() => this.addToHistory()} />
             <AddressList
                 addresses={addrs}
             />
