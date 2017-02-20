@@ -30,6 +30,7 @@ export class AddressList extends Component {
         }
         console.log('AddressList-addresses='+props.addresses)
         if (props.addresses) {
+            let ctr=0
             return (
                     <div>
                     <h3>Address History</h3>
@@ -37,7 +38,7 @@ export class AddressList extends Component {
                     <ul style={list_style}>
                             {props.addresses.map((address) => {
                                 console.log('AddressList-address=',address)
-                                return <li>{address}</li>
+                                return <li key={(++ctr).toString()}>{address}</li>
                             })}
                     </ul>
                     </div>
